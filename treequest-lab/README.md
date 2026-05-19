@@ -11,7 +11,7 @@ TreeQuest Lab enables autonomous ML research through progressive agentic tree se
 
 ![Demo GIF Placeholder](outputs/visualizations/demo.gif)
 
-## 🌟 Motivation
+## Motivation
 
 Inspired by [Sakana AI's AI Scientist-v2](https://sakana.ai/ai-scientist-v2/), TreeQuest Lab brings nature-inspired exploration to automated scientific discovery. We prioritize:
 
@@ -20,24 +20,37 @@ Inspired by [Sakana AI's AI Scientist-v2](https://sakana.ai/ai-scientist-v2/), T
 - **Cost Control**: Efficient search strategies for limited compute budgets
 - **Scientific Rigor**: Structured evaluation and ablation studies
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 graph TD
-    A[Experiment Manager] --> B[Tree Search (MCTS)]
-    B --> C[Node Selection]
-    C --> D[Idea Proposer Agent]
-    D --> E[Code Architect Agent]
-    E --> F[Sandbox Executor]
-    F --> G[Evaluator Agent]
-    G --> H[Critic/Reflector Agent]
-    H --> I[Backpropagation]
-    I --> J[Reporter Agent]
-    J --> K[Mini Research Report]
+    EM[Experiment Manager] --> TS[Tree Search MCTS]
+    TS --> NS[Node Selection]
+    NS --> IP[Idea Proposer Agent]
+    IP --> CA[Code Architect Agent]
+    CA --> SE[Sandbox Executor]
+    SE --> EV[Evaluator Agent]
+    EV --> CR[Critic Reflector Agent]
+    CR --> BP[Backpropagation]
+    BP --> TS
+    BP --> RP[Reporter Agent]
+    RP --> MR[Mini Research Report]
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style J fill:#bfb,stroke:#333,stroke-width:2px
+    subgraph Agents
+        IP
+        CA
+        EV
+        CR
+        RP
+    end
+    
+    subgraph Core
+        EM
+        TS
+        NS
+        SE
+        BP
+    end
 ```
 
 ### Core Components
@@ -53,7 +66,7 @@ graph TD
 4. **Sandbox Execution**: Safe subprocess execution with timeouts
 5. **Memory System**: Vector store for novelty promotion
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -85,7 +98,7 @@ python -m src.visualization.dashboard
 python scripts/reproduce.py --run-id <run_id>
 ```
 
-## 📊 Example Results
+## Example Results
 
 After a successful run, TreeQuest Lab produces:
 
@@ -120,7 +133,7 @@ After a successful run, TreeQuest Lab produces:
 [Cited works]
 ```
 
-## 🔬 How This Relates to Sakana AI Scientist-v2
+## How This Relates to Sakana AI Scientist-v2
 
 TreeQuest Lab implements key concepts from Sakana's work:
 
@@ -139,7 +152,7 @@ TreeQuest Lab implements key concepts from Sakana's work:
 - Modular architecture for easy extension
 - Open-source alternative to proprietary systems
 
-## 🧪 Ablation Studies
+## Ablation Studies
 
 We recommend running these ablations to understand component contributions:
 
@@ -150,7 +163,7 @@ We recommend running these ablations to understand component contributions:
 
 See `notebooks/exploration.ipynb` for detailed analysis templates.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 treequest-lab/
@@ -198,7 +211,7 @@ treequest-lab/
 └── tests/                    # Test suite
 ```
 
-## 🛠️ Development
+## Development
 
 ### Running Tests
 
@@ -221,24 +234,24 @@ ruff check src/
 3. Register in workflow
 4. Add tests
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by [Sakana AI's AI Scientist-v2](https://sakana.ai/ai-scientist-v2/)
 - Built with [LangGraph](https://langchain-ai.github.io/langgraph/)
 - Uses [Hugging Face Transformers](https://huggingface.co/transformers/)
 
-## 📬 Contact
+## Contact
 
 For questions or collaborations, please open an issue or contact the maintainers.
 
 ---
 
-*Built with ❤️ for autonomous scientific discovery*
+*Built for autonomous scientific discovery*
