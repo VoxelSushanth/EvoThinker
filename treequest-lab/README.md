@@ -242,6 +242,15 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 MIT License - see [LICENSE](LICENSE) for details.
 
+## Documentation
+
+Detailed documentation is available in the `docs/` directory:
+
+- **[Architecture Guide](docs/ARCHITECTURE.md)**: Deep dive into system design and components
+- **[Getting Started](docs/GETTING_STARTED.md)**: Installation, configuration, and quick start guide
+- **[Agent Implementation](docs/AGENTS.md)**: How to build and extend agents
+- **[Example Experiments](docs/EXAMPLES.md)**: Concrete examples and workflows
+
 ## Acknowledgments
 
 - Inspired by [Sakana AI's AI Scientist-v2](https://sakana.ai/ai-scientist-v2/)
