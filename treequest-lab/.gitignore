@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+!.env.example
+
+# Logs
+*.log
+logs/
+wandb/
+
+# Experiment outputs (keep structure, ignore data)
+outputs/runs/*
+outputs/papers/*
+outputs/visualizations/*
+!outputs/.gitkeep
+!outputs/runs/.gitkeep
+!outputs/papers/.gitkeep
+!outputs/visualizations/.gitkeep
+
+# Notebooks checkpoint
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+coverage.xml
+*.cover
+
+# Type checking
+.mypy_cache/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Data files (large datasets)
+data/
+*.parquet
+*.h5
+*.hdf5
+
+# Model checkpoints (too large for git)
+models/
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS
+Thumbs.db
+.DS_Store
