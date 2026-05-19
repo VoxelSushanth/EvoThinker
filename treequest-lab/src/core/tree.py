@@ -538,3 +538,15 @@ if __name__ == "__main__":
     
     # Cleanup
     Path("test_tree.json").unlink()
+
+    def get_depth(self, node_id: str) -> int:
+        """Get depth of a node."""
+        node = self.get_node(node_id)
+        return node.depth if node else 0
+    
+    def get_parent(self, node_id: str):
+        """Get parent of a node."""
+        node = self.get_node(node_id)
+        if node and node.parent_id:
+            return self.get_node(node.parent_id)
+        return None
