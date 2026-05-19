@@ -1,0 +1,141 @@
+# TreeQuest Lab Hyperparameters
+
+# Experiment Configuration
+experiment:
+  name: "default_exploration"
+  seed: 42
+  max_iterations: 100
+  budget_hours: 2.0
+
+# LLM Configuration
+llm:
+  provider: "openai"
+  model: "gpt-4o-mini"
+  temperature: 0.7
+  max_tokens: 4096
+  top_p: 0.95
+  frequency_penalty: 0.0
+  presence_penalty: 0.0
+
+# Tree Search Parameters
+tree_search:
+  algorithm: "mcts"  # mcts, bfs, dfs, random
+  max_depth: 10
+  max_width: 5
+  max_nodes: 100
+  uct_exploration_constant: 1.41
+  progressive_widening_threshold: 2
+  discount_factor: 0.99
+  
+# Agent Configuration
+agents:
+  proposer:
+    system_prompt_version: "v2"
+    max_ideas_per_turn: 3
+    novelty_bonus_weight: 0.3
+    
+  executor:
+    timeout_seconds: 300
+    max_retries: 2
+    sandbox_type: "subprocess"  # subprocess, docker
+    
+  evaluator:
+    metrics:
+      - "accuracy"
+      - "loss"
+      - "training_time"
+      - "memory_usage"
+    statistical_tests:
+      - "t_test"
+      - "wilcoxon"
+      
+  critic:
+    scoring_weights:
+      novelty: 0.3
+      feasibility: 0.3
+      promise: 0.4
+    reflection_enabled: true
+    
+  reporter:
+    include_code: false
+    include_figures: true
+    latex_style: true
+
+# Memory System
+memory:
+  enabled: true
+  type: "chroma"
+  collection_name: "treequest_ideas"
+  persist_directory: "outputs/memory"
+  similarity_threshold: 0.85
+  max_history_size: 1000
+
+# Evaluation Harness
+evaluation:
+  default_dataset: "cifar10_subset"
+  dataset_configs:
+    cifar10_subset:
+      num_samples: 1000
+      num_classes: 10
+    gsm8k_small:
+      num_samples: 100
+    mnist_tiny:
+      num_samples: 500
+      
+  default_model:
+    architecture: "resnet18"
+    size: "small"
+    pretrained: false
+    
+  training:
+    epochs: 10
+    batch_size: 32
+    learning_rate: 0.001
+    weight_decay: 0.01
+    scheduler: "cosine"
+
+# Resource Limits
+resources:
+  max_memory_gb: 8
+  max_cpu_cores: 4
+  gpu_enabled: true
+  gpu_device: "cuda:0"
+
+# Logging & Tracking
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_output: true
+  console_output: true
+  
+wandb:
+  enabled: false
+  project: "treequest-lab"
+  entity: null
+  tags:
+    - "exploration"
+    - "auto-generated"
+
+# Visualization
+visualization:
+  tree_format: "png"  # png, pdf, svg
+  plot_style: "seaborn-v0_8"
+  figsize:
+    width: 12
+    height: 8
+  dpi: 300
+  show_legend: true
+  save_formats:
+    - "png"
+    - "pdf"
+
+# Safety & Constraints
+safety:
+  max_file_size_mb: 10
+  forbidden_imports:
+    - "os.system"
+    - "subprocess.call"
+    - "eval"
+    - "exec"
+  network_access: false
+  filesystem_write: "experiments/outputs"
